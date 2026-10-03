@@ -62,33 +62,36 @@
             }
     
             body {
-                background: white !important;
-                color: #222222 !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
     
-            p, h1, h2, h3, h4, span, li, a {
-                color: inherit !important;
-            }
-    
+            /* Force each article to start on a brand new page */
             article {
                 break-before: page;
                 page-break-before: always;
                 break-inside: avoid;
                 page-break-inside: avoid;
+                display: block !important; /* Prevents grid/flex stretching on the article itself */
             }
     
-            /* Prevent image wrappers, cards, figures, and text from splitting */
+            /* Reset flex or grid containers inside articles from stretching items */
+            article .grid, article .flex, article [style*="display: flex"], article [style*="display: grid"] {
+                display: block !important;
+            }
+    
+            /* Prevent image containers, cards, and text from splitting */
             .image-container, .card, .cell, figure, p, h1, h2, h3, h4 {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
     
+            /* Enforce strict un-stretched dimensions on images */
             img {
                 max-width: 100% !important;
+                width: auto !important;
                 height: auto !important;
-                object-fit: contain;
+                object-fit: contain !important;
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
