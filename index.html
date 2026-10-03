@@ -56,23 +56,39 @@
 
    <style>
         @media print {
-            body {
-                background: white;
-                color: black;
+            /* Page setup */
+            @page {
+                size: letter;
+                margin: 0.75in;
             }
+
+            /* Clean white background for printing */
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            /* Force each article to start on a brand new page */
             article {
                 break-before: page;
                 page-break-before: always;
-            }
-            img, figure, p, h1, h2, h3 {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
-            /* Fix squished images */
+
+            /* Prevent text blocks and images from splitting across pages */
+            p, h1, h2, h3, h4, figure {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* Prevent images from getting squished or distorted */
             img {
-                max-width: 100%;
+                max-width: 100% !important;
                 height: auto !important;
                 object-fit: contain;
+                break-inside: avoid;
+                page-break-inside: avoid;
             }
         }
     </style>
