@@ -54,45 +54,49 @@
         }
     </style>
 
-   <style>
+   <!-- 2. Your separate print-only styles -->
+    <style>
         @media print {
             @page {
                 size: letter;
                 margin: 0.75in;
             }
-    
-            body {
+
+            body, html {
+                background: white !important;
+                color: #27272a !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
-    
-            /* Force each article to start on a brand new page and keep text white */
+
             article {
                 break-before: page;
                 page-break-before: always;
                 break-inside: avoid;
                 page-break-inside: avoid;
                 display: block !important;
-                color: #ffffff !important; /* Locks text white inside articles */
+                margin-top: 0 !important;
+                padding-top: 0.5in !important;
             }
-    
-            /* Ensure all text inside articles stays white */
-            article p, article h1, article h2, article h3, article h4, article span, article li, article a {
-                color: #ffffff !important;
+
+            h1, h2, h3, h4, .text-accentPurple, a {
+                color: #7c3aed !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
-    
-            /* Reset flex or grid containers inside articles from stretching items */
-            article .grid, article .flex, article [style*="display: flex"], article [style*="display: grid"] {
+
+            .grid, .flex, [style*="display: flex"], [style*="display: grid"] {
                 display: block !important;
             }
-    
-            /* Prevent image containers, cards, and text from splitting */
-            .image-container, .card, .cell, figure, p, h1, h2, h3, h4 {
+
+            .card, .cell, figure, p, li {
                 break-inside: avoid;
                 page-break-inside: avoid;
+                color: #3f3f46 !important;
             }
-    
-            /* Enforce strict un-stretched dimensions on images */
+
             img {
                 max-width: 100% !important;
                 width: auto !important;
