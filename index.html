@@ -64,6 +64,16 @@
                 break-before: page;
                 page-break-before: always;
             }
+            img, figure, p, h1, h2, h3 {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            /* Fix squished images */
+            img {
+                max-width: 100%;
+                height: auto !important;
+                object-fit: contain;
+            }
         }
     </style>
 </head>
