@@ -66,13 +66,19 @@
                 print-color-adjust: exact !important;
             }
     
-            /* Force each article to start on a brand new page */
+            /* Force each article to start on a brand new page and keep text white */
             article {
                 break-before: page;
                 page-break-before: always;
                 break-inside: avoid;
                 page-break-inside: avoid;
-                display: block !important; /* Prevents grid/flex stretching on the article itself */
+                display: block !important;
+                color: #ffffff !important; /* Locks text white inside articles */
+            }
+    
+            /* Ensure all text inside articles stays white */
+            article p, article h1, article h2, article h3, article h4, article span, article li, article a {
+                color: #ffffff !important;
             }
     
             /* Reset flex or grid containers inside articles from stretching items */
