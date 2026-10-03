@@ -56,33 +56,35 @@
 
    <style>
         @media print {
-            /* Page setup */
             @page {
                 size: letter;
                 margin: 0.75in;
             }
-
-            /* Clean white background for printing */
+    
             body {
                 background: white !important;
-                color: black !important;
+                color: #222222 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
-
-            /* Force each article to start on a brand new page */
+    
+            p, h1, h2, h3, h4, span, li, a {
+                color: inherit !important;
+            }
+    
             article {
                 break-before: page;
                 page-break-before: always;
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
-
-            /* Prevent text blocks and images from splitting across pages */
-            p, h1, h2, h3, h4, figure {
+    
+            /* Prevent image wrappers, cards, figures, and text from splitting */
+            .image-container, .card, .cell, figure, p, h1, h2, h3, h4 {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
-
-            /* Prevent images from getting squished or distorted */
+    
             img {
                 max-width: 100% !important;
                 height: auto !important;
